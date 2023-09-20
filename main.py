@@ -1,8 +1,10 @@
+# Théo RICHARD Groupe 2 Efrei M1 Dev. Manager Full Stack
+
 import requests
 
 
 def get_codes():
-    nbPosts = int(input("Combien de posts voulez-vous afficher ?"))
+    nbPosts = int(input("Combien de posts voulez-vous afficher ? "))
 
     for i in range(1, nbPosts+1):
         r = requests.get("https://jsonplaceholder.typicode.com/posts/" + str(i))
@@ -10,7 +12,7 @@ def get_codes():
 
 
 def get_users():
-    nbUsers = int(input("Combien d'utilisateurs voulez-vous afficher ?"))
+    nbUsers = int(input("Combien d'utilisateurs voulez-vous afficher ? "))
 
     for i in range(1, nbUsers+1):
         r = requests.get("https://jsonplaceholder.typicode.com/users/" + str(i))
@@ -18,8 +20,8 @@ def get_users():
 
 
 def create_post():
-    title = input("Écrivez un titre :")
-    body = input("Écrivez un corps de texte :")
+    title = input("Écrivez un titre : ")
+    body = input("Écrivez un corps de texte : ")
 
     data = {
         'title': title,
@@ -28,7 +30,7 @@ def create_post():
     r = requests.post("https://jsonplaceholder.typicode.com/posts", json=data)
 
     if r.status_code == 201:
-        print("La requête POST a réussi. Voici son ID :")
+        print("La requête POST a réussi. Voici son ID : ")
         print(r.json()['id'])
     else:
         print(f"La requête POST a échoué avec le code d'erreur : {r.status_code}")
@@ -39,7 +41,7 @@ def main():
     print("2 - Afficher des users")
     print("3 - Ajouter un post")
 
-    choice = input("Que voulez-vous faire ?")
+    choice = input("Que voulez-vous faire ? ")
 
     match choice:
         case "1":
@@ -49,7 +51,7 @@ def main():
         case "3":
             create_post()
         case _:
-            print("Valeur non reconnue")
+            print("Valeur non reconnue. Fin du programme.")
             exit()
 
 
